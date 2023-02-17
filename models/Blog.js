@@ -6,21 +6,21 @@ class Blog extends Model {}
 Blog.init(
     {
         id: {
-            type: DataType.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
         title: {
-            type: DataType.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         content: {
-            type: DataType.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         user_id: {
-            type: DataType.INTEGER,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'user',
                 key: 'id',
