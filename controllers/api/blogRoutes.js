@@ -1,4 +1,4 @@
-const router = rquire('express').Router();
+const router = require('express').Router();
 const { Blog } = require('../../models');
 const withAuth = require('../../utils/auths');
 
