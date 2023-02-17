@@ -12,9 +12,22 @@ const helpers = require('./utils/helpers')
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-//const sess
+const sess = {
+    secret: 'Secret',
+    cookies: {
+        maxAge: 300000,
+        httpOnly: true,
+        secure: false,
+        sameSite: 'strict'
+    },
+    resave: false,
+    saveUninitialized: true,
+    store: new SequeilzeStore({
+        db: sequelize
+    })
+};
 
-//app.use(session(sess))
+app.use(session(sess))
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars')
