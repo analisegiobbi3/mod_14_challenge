@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection')
 const { Blog, User, Comment } = require('../models');
-const withAuth = require('../utils/auths')
 
 router.get('/', async (req, res) => {
     try{
@@ -47,7 +46,6 @@ router.get('/blog/:id', async (req, res) => {
                 'content',
                 'created_at',
             ],
-            order: ['created_at', 'DESC'],
             include: [
                 {
                     model: User,
