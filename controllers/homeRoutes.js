@@ -1,15 +1,30 @@
 const router = require('express').Router();
-const { route } = require('.');
-const { Blog, User } = require('../models');
+const sequelize = require('../config/connection')
+const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auths')
 
 router.get('/', async (req, res) => {
     try{
         const blogData = await Blog.findAll({
+            attributes: [
+                'id',
+                'title',
+                'content',
+                'created_at',
+            ],
+            order: ['created_at', 'DESC'],
             include: [
                 {
                     model: User,
                     attributes: ['username'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment_content', 'blog_id', 'user_id', 'create_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username'],
+                    }
                 },
             ],
         });
@@ -26,10 +41,25 @@ router.get('/', async (req, res) => {
 router.get('/blog/:id', async (req, res) => {
     try {
         const blogData = await Blog.findByPk(req.params.id, {
+            attributes: [
+                'id',
+                'title',
+                'content',
+                'created_at',
+            ],
+            order: ['created_at', 'DESC'],
             include: [
                 {
                     model: User,
                     attributes: ['username'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment_content', 'blog_id', 'user_id', 'create_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username'],
+                    }
                 },
             ],
         });
@@ -44,28 +74,20 @@ router.get('/blog/:id', async (req, res) => {
     }
 })
 
-router.get('/home', withAuth, async (req, res) => {
-    try{
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            include: [{ model: Blog }],
-        });
-        const user = userData.get({ plain: true });
-        res.render('home', {
-            ...user,
-            logged_in: true
-        });
-    }catch(err){
-        res.status(500).json(err);
-    }
-});
-
 router.get('/login', (req, res) => {
     if(req.session.logged_in) {
-        res.redirect('/home');
+        res.redirect('/');
         return;
     }
     res.render('login')
+})
+
+router.get('/signup', (req, res) =>{
+    if(req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+    res.render('signup') 
 })
 
 module.exports = router;
