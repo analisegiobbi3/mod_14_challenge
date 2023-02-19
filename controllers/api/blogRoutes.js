@@ -1,11 +1,77 @@
 const router = require('express').Router();
-const { Blog } = require('../../models');
+const { Blog, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auths');
+const sequelize = require('../../config/connection')
+
+router.get('/', async (req, res) => {
+    try{
+        const blogData = await Blog.findAll({
+            attributes: [
+                'id',
+                'title',
+                'content',
+                'created_at',
+            ],
+            order: ['created_at', 'DESC'],
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment_content', 'blog_id', 'user_id', 'create_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username'],
+                    }
+                },
+            ],
+        })
+        res.status(200).json(blogData)
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
+
+router.get('/:id', async (req, res) => {
+    try{
+        const blogData = await Blog.findAll(req.params.id, {
+            attributes: [
+                'id',
+                'title',
+                'content',
+                'created_at',
+            ],
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment_content', 'blog_id', 'user_id', 'create_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username'],
+                    }
+                },
+            ],
+        })
+        if (!blogData){
+            res.status(404).json({ message: 'There are no posts with this id' })
+        }
+        res.status(200).json(blogData)
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
 
 router.post('/', withAuth, async (req, res) => {
     try{
         const newBlogPost = await Blog.create({
-            ...req.body,
+            title: req.body.title,
+            content: req.body.content,
             user_id: req.session.user_id,
         })
         res.status(200).json(newBlogPost)
@@ -19,14 +85,12 @@ router.put('/:id', withAuth, async (req, res) => {
     try {
         const blogData = await Blog.update(
             {
-                user_id: req.body.user_id,
-            },
-            {
                 where: {
                     id: req.params.id,
                 },
             },
         )
+        res.status(200).json(blogData)
     }catch(err){
         res.status(500).json(err)
     }
@@ -37,7 +101,6 @@ router.delete('/:id', withAuth, async (req, res) => {
         const blogPostData = await Blog.destroy({
             where: {
                 id: req.params.id,
-                user_id: req.params.user_id,
             },
         });
         if (!blogPostData){
