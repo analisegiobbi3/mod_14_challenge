@@ -15,7 +15,7 @@
     </div>
     <div class="column">
         <h2>About Me</h2>
-        {{> user-info}}
+        {{> user}}
     </div>
 </section>
 
@@ -25,7 +25,7 @@
     <ol>
         {{#each blogs as |blog|}}
         <li>
-            {{> blog-info blog}}
+            {{> blog blog}}
             <a href="/dashboard/edit/{{blog.id}}" class="edit-link">Edit your post</a>
         </li>
         {{/each}}
