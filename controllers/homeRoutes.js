@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
                 },
             ],
         });
-        const blogs = blogData.map((blog) => blog.get({ plain: true}));
+        const blogs = blogData.map((blog) => blog.get({ plain: true }));
         res.render('homepage', {
             blogs,
             logged_in: req.session.logged_in
@@ -61,10 +61,13 @@ router.get('/blog/:id', async (req, res) => {
                 },
             ],
         });
+        if (!blogData){
+            res.status(404).json({ message: 'There are no blog posts with this id' })
+        }
         const blog = blogData.get({ plain: true });
 
-        res.render('blog', {
-            ...blog,
+        res.render('single-post', {
+            blog,
             logged_in: req.session.logged_in
         });
     }catch(err){
