@@ -6,10 +6,10 @@ const postHandler = async (event) =>{
     const response = await('/api/blogs', {
         method: 'POST',
         body: JSON.stringify({
-            post_title,
-            post_text
+            title,
+            content,
         }),
-        header:{
+        headers:{
             'Content-Type': 'application/json'
         }
     });
