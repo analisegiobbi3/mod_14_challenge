@@ -1,9 +1,9 @@
 <article class="post">
-    <div class="title">
-        <span><a href="/blog-info/{{id}}">{{title}}</a></span><span style="float:right">Posted by: {{user.username}} on {{format_date created_at}}</span>
+    <div class="blog-title">
+        <span style="font-weight: bold; margin: 10px"><a href="/blog-info/{{id}}">{{title}}</a></span><span style="float:right">Posted by: {{user.username}} on {{format_date created_at}}</span>
         <br>
     </div>
-    <div class="content">
-        <p>{{content}}</p>
+    <div class="blog-content">
+        <p style="margin: 10px">{{content}}</p>
     </div>
 </article>
