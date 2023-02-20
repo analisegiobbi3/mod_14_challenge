@@ -15,7 +15,7 @@
             <header>
                 <nav class="nav">
                     <span><a class="nav-link active" href="/">Home</a></span>
-                    {{#if loggedIn}}
+                    {{#if logged_in}}
                     <a class="nav-link active" href="/dashboard">Dashboard</a>
                     <button id="logout" class="btn-no-style">Logout</button>
                     {{else}}
@@ -33,7 +33,7 @@
                 Powered by Heroku
             </footer>
         </div>
-        {{#if loggedIn}}
+        {{#if logged_in}}
         <script src="/js/logout.js"></script>
         {{/if}}
     </body>

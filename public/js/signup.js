@@ -11,7 +11,7 @@ const signupFormHandler = async (event) =>{
             header: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
-            document.location.replace('/home');
+            document.location.replace('/dashboard');
         }else{
             alert(response.statusText);
         }
