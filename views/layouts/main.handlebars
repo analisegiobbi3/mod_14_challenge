@@ -13,18 +13,18 @@
     <body>
         <div class="wrapper">
             <header>
-            <nav>
-                <span><a class="nav-link" href="/">Home</a>/span>
-                {{#if loggedIn}}
-                <a class="nav-link" href="/dashboard">Dashboard</a>
-                <button id="logout" class="btn-no-style">Logout</button>
-                {{else}}
-                <a href="/login">Login</a>
-                {{/if}}
+                <nav>
+                    <span><a href="/">Home</a></span>
+                    {{#if loggedIn}}
+                    <a href="/dashboard">Dashboard</a>
+                    <button id="logout" class="btn-no-style">Logout</button>
+                    {{else}}
+                    <a href="/login">Login</a>
+                    {{/if}}
+                </nav>
                 <h1 id="title">
                     <a href="/">Tech Blog</a>
                 </h1>
-            </nav>
             </header>
             <main>
                 {{{body}}}
