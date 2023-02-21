@@ -1,0 +1,19 @@
+<article>
+    <h2>Update User Info</h2>
+    <form class="edit-user">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+            <input name="username" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+            <input name="password" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div>
+            <input type="hidden" id="user-id" name="user-id" value={{user.id}}/>
+        </div>
+        <button type="submit">Update Your User</button>
+    </form>
+</article>
+
+<script src="/js/edituser.js"></script>
