@@ -1,0 +1,18 @@
+{{> blog-info blog}}
+
+{{#if logged-in}}
+<form class="comment-form">
+    <div>
+        <textarea class="ml-5" name="comment-content"></textarea>
+    </div>
+    <div>
+        <button class="button is-warning ml-5 mb-5">Submit Comment</button>
+    </div>
+</form>
+{{/if}}
+
+{{> commenst blog.comments}}
+
+{{#if logged-in}}
+<script src="/js/comment.js"></script>
+{{/if}}
