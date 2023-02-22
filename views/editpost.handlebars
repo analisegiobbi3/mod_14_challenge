@@ -1,0 +1,25 @@
+<article>
+    <h2 class="title mt-5">Edit Posts</h2>
+    <form class="edit-post">
+        <div>
+            <label for="blog-title">Blog Post Title: </label>
+            <input class="input" name="blog-post-title" type="text" value="{{blog.title}}"/>
+        </div>
+        <div>
+            <label for="blog-content">Blog Post Content:</label>
+            <input class="textarea" name="blog-post-content" type="text" value="{{blog.content}}"/>
+        </div>
+        <div class="is-pulled-right">
+            Created on {{format_date.blog.created_at}}
+            <a href="/blog/{{blog.id}}">{{blog.comments.length}}</a>
+        </div>
+        <button type="submit" class="button is-success">Save Edited Post</button>
+        <button type="button" class="button is-danger">Delete Post</button>
+
+    </form>
+</article>
+{{> comments blog.comments}}
+
+<script src="/js/editpost.js"></script>
+<script src="/js/deletepost.js"></script>
+<script src="/js/comment.js"></script>
