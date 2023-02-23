@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Comment } = require('../../models')
 const withAuth = require('../../utils/auths')
 
+//gets all comments
 router.get('/', async (req, res) =>{
     try{
         const commentData = await Comment.findAll()
@@ -11,6 +12,7 @@ router.get('/', async (req, res) =>{
     }
 })
 
+//allows you to create a commont
 router.post('/', withAuth, async (req, res) => {
     try{
         if (req.session){
@@ -26,6 +28,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 })
 
+//allows you to delete a comment
 router.delete('/:id', withAuth, async (req, res) => {
     try{
         const commentData = await Comment.destroy({

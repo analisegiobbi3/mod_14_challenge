@@ -3,9 +3,13 @@ const sequelize = require('../config/connection')
 const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auths')
 
+//you need to be logged in to get posts on the dashboard 
 router.get('/', withAuth, async (req, res) =>{
     try{
-        const yourBlogData = await Blog.findAll(req.params.user_id, {
+        const yourBlogData = await Blog.findAll({
+            where: {
+               user_id: req.params.user_id
+            },
             attributes: [
                 'id',
                 'title',
@@ -27,7 +31,7 @@ router.get('/', withAuth, async (req, res) =>{
                 },
             ],
         });
-        const blog = yourBlogData.map((blog) => blog.get({ plain: true}));
+        const blog = yourBlogData.map((blog) => blog.get({ plain: true }));
         res.render('dashboard', {
             blog,
             logged_in: true
@@ -37,9 +41,13 @@ router.get('/', withAuth, async (req, res) =>{
     }
 })
 
+//gets singular post and renders the edit post page
 router.get('/edit/:id', withAuth, async (req, res) => {
     try{
-        const yourBlogData = await Blog.findByPk(req.params.id, {
+        const yourBlogData = await Blog.findByPk({
+            where: {
+                id: req.params.id
+            },
             attributes: [
                 'id',
                 'title',
@@ -76,6 +84,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     }
 });
 
+//renders the post page so you can post a blog post
 router.get('/post/', withAuth, async (req, res) =>{
     try{
         const yourBlogData = await Blog.findAll({

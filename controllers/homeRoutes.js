@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection')
 const { Blog, User, Comment } = require('../models');
 
+//Finds all of the blog posts and renders them on the homepage 
 router.get('/', async (req, res) => {
     try{
         const blogData = await Blog.findAll({
@@ -37,9 +38,13 @@ router.get('/', async (req, res) => {
     }
 });
 
+//this route will find an individual post and render the post on its own page for commenting 
 router.get('/blog/:id', async (req, res) => {
     try {
-        const blogData = await Blog.findByPk(req.params.id, {
+        const blogData = await Blog.findByPk({
+            where: {
+                id: req.params.id
+            },
             attributes: [
                 'id',
                 'title',
@@ -75,6 +80,7 @@ router.get('/blog/:id', async (req, res) => {
     }
 })
 
+//login route redirects the user to the login page if they are not logged in. If they are logged in, goes to home page
 router.get('/login', (req, res) => {
     if(req.session.logged_in) {
         res.redirect('/');
@@ -83,6 +89,7 @@ router.get('/login', (req, res) => {
     res.render('login')
 })
 
+//signup route redirects the user to the signup page if they are not logged in. If they are signed up in, goes to home page
 router.get('/signup', (req, res) =>{
     if(req.session.logged_in) {
         res.redirect('/');
