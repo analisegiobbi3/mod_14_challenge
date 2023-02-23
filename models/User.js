@@ -8,6 +8,7 @@ class User extends Model{
         return bcrypt.compareSync(loginPw, this.password);
       }
 }
+//user model stores the user info: username and password
 
 User.init(
     {
