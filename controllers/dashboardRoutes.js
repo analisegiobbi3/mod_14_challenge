@@ -76,25 +76,6 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     }
 });
 
-router.get('/edituser', withAuth, async (req, res) => {
-    try{
-        const yourBlogData = await Blog.findByPk(res.params.user_id, {
-            attributes: { exclude: ['password']}
-        })
-        if (!yourBlogData){
-            res.status(404).json({ message: 'There are no posts with this id'})
-            return;
-        }
-        const user = yourBlogData.get({ plain: true })
-        res.render('edituser', {
-            user,
-            logged_in: true
-        });
-    }catch (err){
-        res.status(500).json(err)
-    }
-})
-
 router.get('/post/', withAuth, async (req, res) =>{
     try{
         const yourBlogData = await Blog.findAll({
