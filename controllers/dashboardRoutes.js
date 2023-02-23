@@ -44,10 +44,7 @@ router.get('/', withAuth, async (req, res) =>{
 //gets singular post and renders the edit post page
 router.get('/edit/:id', withAuth, async (req, res) => {
     try{
-        const yourBlogData = await Blog.findByPk({
-            where: {
-                id: req.params.id
-            },
+        const yourBlogData = await Blog.findByPk(req.params.id, {
             attributes: [
                 'id',
                 'title',

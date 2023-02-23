@@ -41,10 +41,7 @@ router.get('/', async (req, res) => {
 //this route will find an individual post and render the post on its own page for commenting 
 router.get('/blog/:id', async (req, res) => {
     try {
-        const blogData = await Blog.findByPk({
-            where: {
-                id: req.params.id
-            },
+        const blogData = await Blog.findByPk(req.params.id, {
             attributes: [
                 'id',
                 'title',

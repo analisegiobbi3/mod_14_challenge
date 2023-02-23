@@ -38,10 +38,7 @@ router.get('/', async (req, res) => {
 //gets posts by id
 router.get('/:id', async (req, res) => {
     try{
-        const blogData = await Blog.findByPk({
-            where: {
-                id: req.params.id
-            },
+        const blogData = await Blog.findByPk(req.params.id, {
             attributes: [
                 'id',
                 'title',
