@@ -98,6 +98,14 @@
     margin: auto;
   }
 
+
+  .blog-post{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%
+  }
+
  .post{
     border: 3px solid;
     border-radius: var(--border-radius);
