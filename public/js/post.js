@@ -1,13 +1,14 @@
-const postHandler = async (event) =>{
+async function postHandler(event){
+    
     event.preventDefault();
-    const post_title = document.querySelector('input [name="blog-title"').value;
-    const post_text = document.querySelector('textarea [name="blog-text"').value;
+    const post_title = document.querySelector('input [name="blog-title"]').value;
+    const post_text = document.querySelector('textarea [name="blog-text"]').value;
 
     const response = await('/api/blogs', {
         method: 'POST',
         body: JSON.stringify({
-            title,
-            content,
+            post_title,
+            post_text,
         }),
         headers:{
             'Content-Type': 'application/json'
@@ -19,6 +20,7 @@ const postHandler = async (event) =>{
     }else{
         alert(response.statusText);
     }
+
 }
 
 document.querySelector('.new-post-form').addEventListener('submit', postHandler);
