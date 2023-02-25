@@ -1,9 +1,16 @@
-<article class="post">
-    <div class="blog-title">
-        <span style="font-weight: bold; margin: 10px"><a href="/blog/{{id}}">{{title}}</a></span><span style="float:right">Posted by: {{user.username}} on {{format_date created_at}}</span>
+<div class="card mb-6">
+    <header class="card-header card-header-title has-background-grey-lighter">
+        <div class="column">
+            <p class="has-text-primary-light"><a href="/blog/{{id}}" class="has-text-black is-capitalized is-pulled-left">{{title}}</a></p>
+        </div>
+    </header>
+    <div class="card-content">
+        <div class="content has-text-justified">
+            {{content}}
+        </div>
+        <div class="is-pulled-right">
+            <b>{{user.usernme}}</b>
+            | {{format_date created_at}} | <a href="/blog/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+        </div>
     </div>
-    <div class="blog-content">
-        <p style="margin: 10px">{{content}}</p>
-    <span style="float:left">{{comments.length}} {{format_plural "comment" comments.length}}</span>
-    </div>
-</article>
+</div>

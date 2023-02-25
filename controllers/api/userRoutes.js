@@ -48,13 +48,10 @@ router.get('/:id', async (req, res) =>{
 //creates a new user
 router.post('/', async (req, res) =>{
     try {
-        const userData = await User.create({
-            username: req.body.username,
-            password: req.body.password
-        })
+        const userData = await User.create(req.body)
         req.session.save(() => {
             req.session.user_id = userData.id;
-            req.session.username = userData.username;
+            // req.session.username = userData.username;
             req.session.logged_in = true;
 
             res.status(200).json(userData)
@@ -75,7 +72,7 @@ router.post('/login', async (req, res) => {
             return
         }
 
-        const validPassword = userData.checkPassword(req.body.password);
+        const validPassword =  await userData.checkPassword(req.body.password);
 
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect username or password, please try again.'})
@@ -84,7 +81,7 @@ router.post('/login', async (req, res) => {
 
         req.session.save(() => {
             req.session.user_id = userData.id;
-            req.session.username = userData.username;
+            // req.session.username = userData.username;
             req.session.logged_in = true;
             res.json({ user: userData, message: 'You are now logged into the blog'});
         })
@@ -92,42 +89,6 @@ router.post('/login', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-//updates user login status
-router.put('/:id', withAuth, async (req, res) =>{
-    try{
-        const userData = await User.update(req.body, {
-            individualHooks: true,
-            where: {
-                id: req.params.id,
-            }
-        })
-        if(!userData){
-            res.status(404).json({ message: "A user with this id does not exist" })
-        }
-        res.status(200).json(userData)
-    }catch(err){
-        res.status(500).json(err)
-    }
-})
-
-//delete user 
-router.delete('/:id', withAuth, async (req, res) =>{
-    try{
-        const userData = await User.destroy({
-            where: {
-                id: req.params.id
-
-            }
-        })
-        if(!userData){
-            res.status(404).json({ message: "A user with this id does not exist" })
-        }
-        res.status(200).json(userData)
-    }catch(err){
-        res.status(500).json(err)
-    }
-})
 
 router.post('/logout', (req, res) =>{
     if (req.session.logged_in) {
