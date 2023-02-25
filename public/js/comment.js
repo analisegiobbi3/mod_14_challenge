@@ -3,7 +3,7 @@ const commentHandler = async (event) =>{
     const comment = document.querySelector('textarea [name="comment-content"').value;
 
 
-    const response = await('/api/comments', {
+    const response = await fetch('/api/comments', {
         method: 'POST',
         body: JSON.stringify({
             blog_id,

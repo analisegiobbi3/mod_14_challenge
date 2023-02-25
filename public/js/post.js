@@ -4,7 +4,7 @@ async function postHandler(event){
     const title = document.querySelector('#blog-title').value.trim();
     const content = document.querySelector('#blog-text').value.trim();
 
-    const response = await('/api/blogs', {
+    const response = await fetch('/api/blogs', {
         method: 'POST',
         body: JSON.stringify({
             title,
