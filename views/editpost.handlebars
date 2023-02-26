@@ -2,19 +2,19 @@
     <h2 class="title mt-5">Edit Posts</h2>
     <form class="edit-post">
         <div>
-            <label for="blog-title">Blog Post Title: </label>
+            <label for="blog-title" class="form-label" style="font-family: 'Rowdies', cursive; color: #6b9080;">Blog Post Title: </label>
             <input class="input" name="blog-post-title" type="text" value="{{blog.title}}"/>
         </div>
         <div>
-            <label for="blog-content">Blog Post Content:</label>
+            <label for="blog-content" class="form-label" style="font-family: 'Rowdies', cursive; color: #6b9080;">Blog Post Content:</label>
             <input class="textarea" name="blog-post-content" type="text" value="{{blog.content}}"/>
         </div>
         <div class="is-pulled-right">
-            Created on {{format_date.blog.created_at}}
+            Created on {{format_date created_at}}
             <a href="/blog/{{blog.id}}">{{blog.comments.length}}</a>
         </div>
-        <button type="submit" class="button is-success">Save Edited Post</button>
-        <button type="button" class="button delete-post is-danger">Delete Post</button>
+        <button id="edit-post" type="submit" class="is-primary is-pulled-right mt-3 mb-3 btn btn-outline-success" style="color: #1b4332">Save Edited Post</button>
+        <button id="delete-post" type="button" class="is-primary is-pulled-right mt-3 mb-3 btn btn-outline-success" style="color: #1b4332">Delete Post</button>
 
     </form>
 </article>

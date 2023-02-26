@@ -111,10 +111,11 @@ router.delete('/:id', withAuth, async (req, res) => {
         const blogPostData = await Blog.destroy({
             where: {
                 id: req.params.id,
+                user_id: req.session.user_id,
             },
         });
         if (!blogPostData){
-            res.status(404).json({ message: 'There are no posts wiht this id' })
+            res.status(404).json({ message: 'There are no posts with this id' })
             return;
         }
         res.status(200).json(blogPostData);

@@ -32,8 +32,8 @@ router.delete('/:id', withAuth, async (req, res) => {
     try{
         const commentData = await Comment.destroy({
             where: {
-                id: req.params.id
-            }
+                id: req.params.id,
+            },
         })
         if (!commentData){
             res.status(404).json({ message: 'there are no comments with this id' })
