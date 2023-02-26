@@ -2,6 +2,14 @@
     font-family: 'Rowdies', cursive;
     color: #6b9080;
   }
+
+  .wrapper {
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
   
   body {
     margin: 0;
@@ -14,11 +22,11 @@
 
   h2 {
     font-family: 'Rowdies', cursive;
-    color: #6b9080;
+    color: #718355;
   }
   
   a {
-    color: #a3b18a;
+    color: #6b9080;
     text-decoration: none;
   }
 
@@ -62,7 +70,7 @@
   
 
   .card {
-    margin: 20px;
+    margin: auto;
     flex: 0 1 300px;
     border: 7px double var(--dark);
     border-radius: 10px;
@@ -72,7 +80,7 @@
   }
   
   .login-form {
-    margin: 0 0 20px 0;
+    margin: auto;
     flex: 0 0 50%;
     max-width: 50%;
     padding: 5px;
@@ -81,11 +89,10 @@
     border-style: double;
     border-width: thick;
     background-color: #a3b18a;
-    color: var(--light);
   }
 
   .signup-form {
-    margin: 0 0 20px 0;
+    margin: auto;
     flex: 0 0 50%;
     max-width: 50%;
     padding: 5px;
@@ -133,6 +140,17 @@
 
  .blog-content{
   font-family: 'Comfortaa', cursive;
+ }
+
+ .comment-form {
+  margin-bottom: 5%
+ }
+
+ .comments{
+  font-size: 90%;
+  margin-bottom: .5%;
+  opacity: .6;
+  padding: 1%;
  }
 
  footer{

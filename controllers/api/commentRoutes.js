@@ -15,14 +15,13 @@ router.get('/', async (req, res) =>{
 //allows you to create a commont
 router.post('/', withAuth, async (req, res) => {
     try{
-        if (req.session){
-            const commentData = await Comment.create({
-                comment_content: req.body.comment_content,
-                blog_id: req.params.blog_id,
-                user_id: req.params.user_id,
-            })
-            res.status(200).json(commentData)
-        }
+        const commentData = await Comment.create({
+            comment_content: req.body.comment_content,
+            blog_id: req.params.blog_id,
+            user_id: req.params.user_id,
+        })
+        res.status(200).json(commentData)
+
     }catch(err){
         res.status(500).json(err)
     }

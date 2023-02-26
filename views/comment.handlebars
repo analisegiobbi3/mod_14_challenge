@@ -1,14 +1,16 @@
+
 {{> blog-info blog}}
 
 {{#if logged_in}}
-<form class="comment-form">
-    <div>
-        <textarea id="comment-text" class="ml-5" name="comment-content"></textarea>
-    </div>
-    <div>
-        <button class="button is-warning ml-5 mb-5">Submit Comment</button>
-    </div>
-</form>
+
+<div class="card">
+    <h3 class="card-header"></h3>
+    <form class="card-body comment-form" id="comment-form">
+        <label class="form-label">Comment</label>
+        <input id="comment" name="comment-body" class="form-input"/>
+        <button type="submit" class="is-primary is-pulled-right mt-3 mb-3 btn btn-outline-success" style="color: #1b4332">Submit Comment</button>
+    </form>
+</div>
 {{/if}}
 
 {{> comments blog.comments}}
@@ -16,3 +18,7 @@
 {{#if logged_in}}
 <script src="/js/comment.js"></script>
 {{/if}}
+
+
+
+
