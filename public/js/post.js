@@ -1,4 +1,4 @@
-async function postHandler(event){
+const postHandler = async (event) =>{
     
     event.preventDefault();
     const title = document.querySelector('#blog-title').value.trim();

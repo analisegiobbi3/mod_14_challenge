@@ -1,9 +1,9 @@
 {{> blog-info blog}}
 
-{{#if logged-in}}
+{{#if logged_in}}
 <form class="comment-form">
     <div>
-        <textarea class="ml-5" name="comment-content"></textarea>
+        <textarea id="comment-text" class="ml-5" name="comment-content"></textarea>
     </div>
     <div>
         <button class="button is-warning ml-5 mb-5">Submit Comment</button>
@@ -13,6 +13,6 @@
 
 {{> comments blog.comments}}
 
-{{#if logged-in}}
+{{#if logged_in}}
 <script src="/js/comment.js"></script>
 {{/if}}

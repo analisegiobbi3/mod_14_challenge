@@ -1,16 +1,14 @@
 <div class="mb-5 pt-3 dashboard-view">
-    <a href="/dashboard/post"><button>Click to Post</button></a>
     <h2>Your Posts</h2>
 </div>
 
 {{#if blogs.length}}
 <section class="dashboard-view">
-    <h2>My Blog Posts</h2>
     <ol>
         {{#each blogs as |blog|}}
         <li>
             {{> blog-info blog}}
-            <a href="/dashboard/edit/{{blog.id}}" class="edit-link">Edit your post</a>
+            <a href="/dashboard/edit/{{blog.id}}"><button class="button mb-5 ml -5 is-warning">Edit Post</button></a>
         </li>
         {{/each}}
     </ol>

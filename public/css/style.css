@@ -11,6 +11,11 @@
     justify-content: flex-start;
     background-color: #fefae0;
   }
+
+  h2 {
+    font-family: 'Rowdies', cursive;
+    color: #6b9080;
+  }
   
   a {
     color: #a3b18a;
@@ -56,7 +61,6 @@
   }
   
 
-  /* CARDS */
   .card {
     margin: 20px;
     flex: 0 1 300px;
