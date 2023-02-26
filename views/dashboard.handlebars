@@ -2,9 +2,9 @@
 <section>
     <h2>Your Posts</h2>
     {{#each blogs as |blog|}}
-    {{> blog-info blog}}
-    {{/each}}
+    {{> blog-info blog}}   
     <a href="/dashboard/edit/{{id}}"><button class="s-primary is-pulled-right mt-3 mb-3 btn btn-outline-success">Edit Post</button></a>
+    {{/each}}
 </section>
 {{else}}
     <h4 class="pb-4 has-text-centered is-bold">There are no posts to view at this moment</h4>
