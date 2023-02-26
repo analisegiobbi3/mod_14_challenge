@@ -1,5 +1,5 @@
 {{#if blogs.length}}
-<section>
+<section id="yourPosts">
     <h2>Your Posts</h2>
     {{#each blogs as |blog|}}
     {{> blog-info blog}}   
@@ -8,7 +8,5 @@
 </section>
 {{else}}
     <h4 class="pb-4 has-text-centered is-bold">There are no posts to view at this moment</h4>
-    <div>
-        <a href="/dashboard/post"><button type="submit" class="s-primary is-pulled-right mt-3 mb-3 btn btn-outline-success">Click to Post</button></a>
-    </div>
+    <a href="/dashboard/post"><button type="submit" class="s-primary is-pulled-right mt-3 mb-3 btn btn-outline-success">Click to Post</button></a>
 {{/if}}

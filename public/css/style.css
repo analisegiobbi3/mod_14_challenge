@@ -9,6 +9,7 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+
   }
   
   body {
@@ -23,6 +24,11 @@
   h2 {
     font-family: 'Rowdies', cursive;
     color: #718355;
+  }
+
+  h4 {
+    margin-left: auto;
+    margin-right: auto;
   }
   
   a {
@@ -106,7 +112,10 @@
   
   .post-display {
     list-style-type: none;
-    margin: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%
   }
 
 
@@ -119,6 +128,18 @@
 
   .dashboard-view{
     display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #yourPosts{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%
+  }
+
+  #edit-post{
     margin-left: auto;
     margin-right: auto;
   }
