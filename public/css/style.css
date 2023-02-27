@@ -3,14 +3,14 @@
     color: #6b9080;
   }
 
-  .wrapper {
+  /* .wrapper {
     width: 100%;
     min-height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
 
-  }
+  } */
   
   body {
     margin: 0;
@@ -133,6 +133,13 @@
   }
 
   #yourPosts{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%
+  }
+
+  #single-post{
     display: block;
     margin-left: auto;
     margin-right: auto;
