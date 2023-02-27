@@ -33,6 +33,7 @@
 
   If you would just like to use the applicaiton without local setup, please use the Herko link below:
 
+  [Tech Blog](https://peaceful-shelf-46864.herokuapp.com/)
   
 
   ## [Usage](#table-of-contents)
