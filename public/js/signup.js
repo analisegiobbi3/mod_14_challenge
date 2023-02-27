@@ -3,7 +3,7 @@ const signupFormHandler = async (event) =>{
 
     const username = document.querySelector('#username-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-
+    //fetch allows you to sign up for a new account
     if (username && password) {
         const response = await fetch('/api/users', {
             method: 'POST',

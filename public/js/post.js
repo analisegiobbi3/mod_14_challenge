@@ -3,7 +3,7 @@ const postHandler = async (event) =>{
     event.preventDefault();
     const title = document.querySelector('#blog-title').value.trim();
     const content = document.querySelector('#blog-text').value.trim();
-
+    //fetch allows you to post new blogs
     const response = await fetch('/api/blogs', {
         method: 'POST',
         body: JSON.stringify({

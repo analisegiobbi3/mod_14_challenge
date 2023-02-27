@@ -3,7 +3,7 @@ const loginFormHandler = async (event) =>{
     const username = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
 
-
+    //fetch allows you to log in with an existing username and password
     if (username && password){
         const response = await fetch('/api/users/login', {
             method: 'POST',
