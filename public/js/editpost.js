@@ -7,11 +7,10 @@ async function editPostHandler(event){
     const response = await fetch(`/api/blogs/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
-            blog_id: id,
             title,
             content,
         }),
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         }
     });
@@ -23,4 +22,4 @@ async function editPostHandler(event){
     }
 }
 
-document.querySelector('#edit-post').addEventListener('submit', editPostHandler);
+document.querySelector('#submit-edit-post').addEventListener('click', editPostHandler);

@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['id', 'comment_content', 'blog_id', 'user_id', 'create_at'],
+                    attributes: ['id', 'comment_content', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username'],
@@ -52,7 +52,7 @@ router.get('/:id', async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['id', 'comment_content', 'blog_id', 'user_id', 'create_at'],
+                    attributes: ['id', 'comment_content', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username'],
@@ -70,6 +70,7 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', withAuth, async (req, res) => {
+    console.log("request.body = " + JSON.stringify(req.body))
     try{
         const newBlogPost = await Blog.create({
             title: req.body.title,
@@ -84,6 +85,9 @@ router.post('/', withAuth, async (req, res) => {
 
 //update blog post 
 router.put('/:id', withAuth, async (req, res) => {
+    console.log("request.body = " + JSON.stringify(req.body.title))
+    console.log("request.params = " + JSON.stringify(req.params))
+
     try {
         const blogData = await Blog.update(
             {
@@ -95,10 +99,12 @@ router.put('/:id', withAuth, async (req, res) => {
                     id: req.params.id,
                 },
             },
+
         )
         if(!blogData){
             res.status(404).json({ message: "there is no post with this id " })
-        }
+        };
+        console.log("Blog data = " + blogData)
         res.status(200).json(blogData)
     }catch(err){
         res.status(500).json(err)

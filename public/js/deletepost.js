@@ -7,7 +7,7 @@ async function deletePostHandler(event){
         body: JSON.stringify({
             blog_id: id,
         }),
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         }
     });

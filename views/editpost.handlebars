@@ -10,10 +10,10 @@
             <input class="textarea" name="edit-blog-post-content" type="text" value="{{blog.content}}"/>
         </div>
         <div class="is-pulled-right">
-            Created on {{format_date created_at}}
+            Created on {{format_date blog.created_at}}
             <a href="/blog/{{blog.id}}">{{blog.comments.length}}</a>
         </div>
-        <button id="edit-post" type="submit" class="is-primary is-pulled-right mt-3 mb-3 btn btn-outline-success" style="color: #1b4332">Save Edited Post</button>
+        <button id="submit-edit-post" type="submit" class="is-primary is-pulled-right mt-3 mb-3 btn btn-outline-success" style="color: #1b4332">Save Edited Post</button>
         <button id="delete-post" type="button" class="is-primary is-pulled-right mt-3 mb-3 btn btn-outline-success" style="color: #1b4332">Delete Post</button>
 
     </form>
